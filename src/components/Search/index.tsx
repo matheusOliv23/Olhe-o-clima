@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import styles from "src/styles/Search.module.scss";
 
 const cities = require("city.list.json");
 

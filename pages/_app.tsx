@@ -1,4 +1,3 @@
-import "src/styles/globals.scss";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
 import theme from "src/styles/theme";

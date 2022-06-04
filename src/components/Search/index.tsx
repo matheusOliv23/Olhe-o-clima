@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import styles from "src/styles/Search.module.scss";
 
 const cities = require("city.list.json");
 
@@ -52,7 +53,7 @@ export default function index() {
   };
 
   return (
-    <div className="search">
+    <div>
       <input type="text" value={query} onChange={handleQuery} />
 
       {query.length > 3 && (

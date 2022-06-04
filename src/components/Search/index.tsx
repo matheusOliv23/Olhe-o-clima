@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { SearchInput, SearchList, SearchListItem } from "./styles";
 
 const cities = require("city.list.json");
 
@@ -53,12 +54,12 @@ export default function index() {
 
   return (
     <div>
-      <input type="text" value={query} onChange={handleQuery} />
+      <SearchInput type="text" value={query} onChange={handleQuery} />
 
       {query.length > 3 && (
-        <ul>
+        <SearchList>
           {results?.map((city, index) => (
-            <li key={index}>
+            <SearchListItem key={index}>
               <Link href={`/location/${city.id}`}>
                 <a>
                   {city.name}
@@ -66,9 +67,9 @@ export default function index() {
                   <span>{city.country}</span>
                 </a>
               </Link>
-            </li>
+            </SearchListItem>
           ))}
-        </ul>
+        </SearchList>
       )}
     </div>
   );

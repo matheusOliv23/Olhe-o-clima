@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useEffect, useState } from "react";
 import Search from "src/components/Search";
+import { Container } from "src/styles/global";
 
 interface Coord {
   lat: number;
@@ -58,7 +59,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Search />
+      <Container>
+        <h1>Confira o tempo na sua cidade!</h1>
+        <Search />
+      </Container>
     </div>
   );
 };

@@ -1,8 +1,55 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { useEffect, useState } from "react";
+import Search from "src/components/Search";
 
+interface Coord {
+  lat: number;
+  lon: number;
+}
+
+interface SearchType {
+  coord: Coord;
+  country: string;
+  id: number;
+  name: string;
+  state: string;
+}
+[
+  {
+    coord: {
+      lat: -19.46583,
+      lon: -44.24667,
+    },
+    country: "BR",
+    id: 3447624,
+    name: "Sete Lagoas",
+    state: "",
+  },
+];
 
 const Home: NextPage = () => {
+  const [data, setData] = useState<SearchType[]>();
+
+  const getData = () => {
+    fetch("./city.list.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then(function (response) {
+        console.log(response);
+        return response.json();
+      })
+      .then(function (myJson) {
+        console.log(myJson);
+        setData(myJson);
+      });
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <div>
       <Head>
@@ -11,7 +58,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main></main>
+      <Search />
     </div>
   );
 };
